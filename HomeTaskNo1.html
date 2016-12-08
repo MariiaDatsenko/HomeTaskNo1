@@ -1,0 +1,97 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset=”utf-8">
+<title>
+HomeTaskNo1
+</title>
+</head>
+<body>
+
+</body>
+<script>
+function replace(form) {
+
+var newItem = document.createElement("li");
+var firstChild = document.getElementById("myul").firstElementChild;
+newItem.innerHTML = "<strong>" + firstChild.innerHTML + "</strong>";
+document.getElementById("myul").replaceChild(newItem, firstChild)
+
+};
+
+
+function append(form) {
+if (form.input.value) {
+var newItem = document.createElement("li")
+newItem.innerHTML = form.input.value;
+console.log(newItem);
+document.getElementById("myul").appendChild(newItem);
+}
+};
+function formInsert(form) {
+if (form.input.value) {
+var formValue = form.input.value;
+var myul = document.getElementById("myul").firstElementChild;
+var newTitle = document.createElement("li");
+newTitle.innerHTML = "<ul>"  + formValue + "</ul>";
+document.getElementById("myul").insertBefore(newTitle, myul);
+}
+};
+
+function remove(form){
+var mainObj = document.getElementById("myul");
+
+}
+function add(form)  {
+var newItem = document.createElement("li");
+var lastChild = document.getElementById("myul").lastElementChild;
+newItem.innerHTML = "<strong>" + lastChild.innerHTML + "</strong>";
+document.getElementById("myul").replaceChild(newItem, lastChild)
+
+};
+function nextElem(){
+var sItem = document.getElementById("myul").nextElementSibling
+var newItem = document.getElementById("myul");
+var firItem = document.getElementById("myul").firstElementChild;
+newItem.innerHTML = "<strong>" + firItem.nextElementSibling.innerHTML + "</strong>";
+document.getElementById("myul").replaceChild(newItem, sItem);
+
+};
+
+
+function restore() {  
+var itemNew = document.getElementById("myul").lastElementChild;
+document.getElementById("myul").removeChild(itemNew);
+};
+
+
+
+
+
+function prevElem(){
+var sItem = document.getElementById("myul").previousElementSibling
+var newItem = document.getElementById("myul");
+var firItem = document.getElementById("myul").lastElementChild;
+newItem.innerHTML = "<strong>" + firItem.previousElementSibling.innerHTML + "</strong>";
+document.getElementById("myul").replaceChild(newItem, sItem);
+
+};
+
+</script>
+<ul id = "myul">
+		<li id = "item1">Первый элемент</li>
+		<li id = "item2">Второй элемент</li>
+	</ul>
+
+<form>
+<input type = "button" value = "Выбрать первый элемент" onClick = "replace(this.form)" >
+<input type = "button" value = "Выбрать последний элемент" onClick = "add(this.form)">
+<p><input type = "button" value = "Выбрать следующий элемент" onClick = "nextElem(this.form)"</p>
+<input type = "button" value = "Выбрать предыдущий элемент" onClick = "prevElem(this.form)">
+<input type = "button" value = "Добавить элемент" onClick = "append(this.form)"> <input id="myinput" type = "text" size = 40  name = "input">
+<p><input type = "button" value = "Удалить элемент" onClick = "restore(this.form)">
+<input type = "button" value = "Добавить вначало" onClick = "formInsert(this.form)">
+</form>
+	
+
+</html>
